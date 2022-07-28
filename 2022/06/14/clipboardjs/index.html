@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  
+
+  <script>(function (i, s, o, g, r, a, m) {
+      i['DaoVoiceObject'] = r;
+      i[r] = i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        };
+      i[r].l = 1 * new Date();
+      a = s.createElement(o);
+      m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      a.charset = 'utf-8';
+      m.parentNode.insertBefore(a, m);
+    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/7655de37.js", 'daovoice');
+    daovoice('init', {
+      app_id: "7655de37",
+    });
+    daovoice('update');
+  </script>
+
+
+<head>
+     
+    <meta charset="UTF-8">
+	<meta name="baidu-site-verification" content="code-BAWKqOTd7U" />
+    <title>clipboard.js - yiwan</title>
+    <link rel="shortcut icon" href="https://img1.baidu.com/it/u=613654980,3198890181&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+    <link rel="icon" href="/https://img1.baidu.com/it/u=613654980,3198890181&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+<link rel="stylesheet" href="/static/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="yiwan">
+    <meta property="og:title" content="clipboard.js"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://api.paugram.com/wallpaper?source=gh) }</style>
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>yiwan</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%8A%80%E6%9C%AF/">小小的技术</a>
+            </div>
+        </div>
+        
+            <a href="/about">关于我</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>clipboard.js</h2>
+            <div class="post-meta">
+                <time class="date">2022.06.14</time>
+            
+                <span class="category"><a class="category-link" href="/categories/%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%8A%80%E6%9C%AF/">小小的技术</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <p>将文本复制到剪贴板的现代方法,没有闪光灯,没有框架,压缩后只有 3kb.</p>
+<span id="more"></span>
+
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>你可以在 npm 上得到它。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install clipboard --save</span><br></pre></td></tr></table></figure>
+<p>或者，如果您不熟悉包管理，<a target="_blank" rel="noopener" href="https://github.com/yiwan95/clipboard">可以下载一个 ZIP文件,里面有我写的dome</a></p>
+<h1 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h1><p>首先，包含位于文件夹中的脚本或从第三方CDN加载它。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;clipboard.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>然后，您需要通过传递 DOM 选择器、HTML 元素或HTML 元素列表来实例化它。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new ClipboardJS(&#x27;.btn&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>在内部，我们需要获取与您的选择器匹配的所有元素并为每个元素附加事件侦听器。如果您有数百个匹配项，则此操作会消耗大量内存。出于这个原因，我们使用事件委托，它用一个监听器替换多个事件监听器。</p>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>我们生活在声明式复兴中，这就是为什么我们决定利用HTML5 数据属性来提高可用性</p>
+<p>从另一个元素复制文本</p>
+<p>一个非常常见的用例是从另一个元素复制内容。您可以通过data-clipboard-target在触发器元素中添加一个属性来做到这一点。<br>您在此属性中包含的值需要与另一个元素选择器匹配。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Target --&gt;</span><br><span class="line">&lt;input id=&quot;foo&quot; value=&quot;https://github.com/zenorocha/clipboard.js.git&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Trigger --&gt;</span><br><span class="line">&lt;button class=&quot;btn&quot; data-clipboard-target=&quot;#foo&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;assets/clippy.svg&quot; alt=&quot;Copy to clipboard&quot;&gt;</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p>从另一个元素剪切文本<br>此外，您可以定义一个属性来指定是否<code>data-clipboard-action</code>要指定内容。copycut<br>如果省略此属性，<code>copy</code>将默认使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Target --&gt;</span><br><span class="line">&lt;textarea id=&quot;bar&quot;&gt;Mussum ipsum cacilds...&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Trigger --&gt;</span><br><span class="line">&lt;button class=&quot;btn&quot; data-clipboard-action=&quot;cut&quot; data-clipboard-target=&quot;#bar&quot;&gt;</span><br><span class="line">    Cut to clipboard</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p>如您所料，该<code>cut</code>操作仅适用于<code>&lt;input&gt;or&lt;textarea&gt;</code>元素。</p>
+<p>从属性复制文本<br>事实是，您甚至不需要另一个元素来复制其内容。您可以data-clipboard-text在触发器元素中包含一个属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Trigger --&gt;</span><br><span class="line">&lt;button class=&quot;btn&quot; data-clipboard-text=&quot;Just because you can doesn&#x27;t mean you should — clipboard.js&quot;&gt;</span><br><span class="line">    Copy to clipboard</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="活动"><a href="#活动" class="headerlink" title="活动"></a>活动</h1><p>在某些情况下，您希望显示一些用户反馈或捕获复制&#x2F;剪切操作后选择的内容。</p>
+<p>这就是为什么我们会触发自定义事件，例如<code>success</code>和<code>error</code>让您监听和实现您的自定义逻辑。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var clipboard = new ClipboardJS(&#x27;.btn&#x27;);</span><br><span class="line"></span><br><span class="line">clipboard.on(&#x27;success&#x27;, function(e) &#123;</span><br><span class="line">    console.info(&#x27;Action:&#x27;, e.action);</span><br><span class="line">    console.info(&#x27;Text:&#x27;, e.text);</span><br><span class="line">    console.info(&#x27;Trigger:&#x27;, e.trigger);</span><br><span class="line"></span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">clipboard.on(&#x27;error&#x27;, function(e) &#123;</span><br><span class="line">    console.error(&#x27;Action:&#x27;, e.action);</span><br><span class="line">    console.error(&#x27;Trigger:&#x27;, e.trigger);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>对于现场演示，只需打开您的控制台 :)</p>
+<h1 id="工具提示"><a href="#工具提示" class="headerlink" title="工具提示"></a>工具提示</h1><p>每个应用程序都有不同的设计需求，这就是为什么 clipboard.js 不包含任何 CSS 或内置工具提示解决方案。<br>您在此演示站点上看到的工具提示是使用GitHub的Primer构建的。如果您正在寻找类似的外观和感觉，您可能需要检查一下。</p>
+<h1 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h1><p>如果您不想修改 HTML,那么有一个非常方便的命令式API供您使用。你需要做的就是声明一个函数,做你的事,然后返回一个值。<br>例如，如果要动态设置a <code>target</code>,则需要返回一个Node.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new ClipboardJS(&#x27;.btn&#x27;, &#123;</span><br><span class="line">    target: function(trigger) &#123;</span><br><span class="line">        return trigger.nextElementSibling;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果您想动态设置 a <code>text</code>,您将返回一个字符串.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new ClipboardJS(&#x27;.btn&#x27;, &#123;</span><br><span class="line">    text: function(trigger) &#123;</span><br><span class="line">        return trigger.getAttribute(&#x27;aria-label&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>为了在Bootstrap Modals或任何其他改变焦点的库中使用，您需要将焦点元素设置为<code>container</code>值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new ClipboardJS(&#x27;.btn&#x27;, &#123;</span><br><span class="line">    container: document.getElementById(&#x27;modal&#x27;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>此外，如果您正在使用单页应用程序，您可能希望更精确地管理DOM的生命周期。以下是清理我们创建的事件和对象的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var clipboard = new ClipboardJS(&#x27;.btn&#x27;);</span><br><span class="line">clipboard.destroy();</span><br></pre></td></tr></table></figure>
+
+<h1 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h1><p>这个库依赖于<code>Selection</code>和<code>execCommand</code> API.所有浏览器都支持第一个，而以下浏览器支持第二个.</p>
+<p><img src="/2022/06/14/clipboardjs/yi.jpg"></p>
+<p>好消息是，如果您需要支持旧版浏览器，clipboard.js 会优雅地降级。您所要做的就是显示一个工具提示，说明Copied!何时success调用事件以及Press Ctrl+C to copy何时调用error事件，因为文本已被选中。</p>
+<p>您还可以通过运行检查是否支持 clipboard.js ClipboardJS.isSupported()，这样您就可以从 UI 中隐藏复制&#x2F;剪切按钮。</p>
+<p><a target="_blank" rel="noopener" href="https://clipboardjs.com/">clipboard.js官网</a></p>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/2022/06/16/css%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E6%BB%9A%E5%8A%A8%E6%9D%A1/">css如何添加滚动条</a></li>
+                
+                
+                    <li>下一篇: <a href="/2022/06/06/%E5%A6%82%E4%BD%95%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%88%B0GitHub%E4%B8%8A/">如何上传本地文件到GitHub上</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/h5/" rel="tag">h5</a><a class="-none-link" href="/tags/js/" rel="tag">js</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://img1.baidu.com/it/u=613654980,3198890181&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="yiwan" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>yiwan</h4>
+                <p>特立独行的一只前端小白菜狗.本站未注明转载的文章均为原创，并采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow">CC BY-NC-SA 4.0</a> 授权协议，转载请注明来源呢.有啥问题点右下角的灰色标标联系我哦!</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/07/18/%E4%BD%BF%E7%94%A8uni%E5%BC%80%E5%8F%91%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%8E%88%E6%9D%83%E7%99%BB%E9%99%86/">使用uni开发字节跳动小程序的授权登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/10/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%89%E6%8A%A5%E9%94%99%E4%BD%86%E4%B8%8D%E6%98%BE%E7%A4%BA/">chrome浏览器有报错但不显示</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/10/uni%E9%A1%B5%E9%9D%A2navigateTo%E8%B7%B3%E8%BD%AC%E7%9A%84%E4%BC%A0%E5%8F%82%E5%92%8C%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0/">uni页面navigateTo跳转的传参和接收参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/04/uni%E7%9C%81%E5%B8%82%E5%8C%BA%E9%80%89%E6%8B%A9%E5%99%A8/">uni省市区选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/06/16/vue-%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E6%88%B3%E5%AF%B9%E8%B1%A1%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F/">vue 获取时间戳对象转换为日期格式</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/06/16/css%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E6%BB%9A%E5%8A%A8%E6%9D%A1/">css如何添加滚动条</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">时光机：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签云：</h3>
+                    <a href="/tags/DaoVoice/" style="font-size: 10px;">DaoVoice</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/github/" style="font-size: 17.5px;">github</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/uni/" style="font-size: 20px;">uni</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E6%8A%A5%E9%94%99/" style="font-size: 12.5px;">报错</a>
+                </div> 
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2022 <a href="/">yiwan</a>. All Rights Reserved.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>var hingle = new Paul_Hingle({"copyright":true,"night":true});</script>
+
+
+  </body>
+</html>
