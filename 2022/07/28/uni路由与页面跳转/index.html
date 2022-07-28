@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  
+
+  <script>(function (i, s, o, g, r, a, m) {
+      i['DaoVoiceObject'] = r;
+      i[r] = i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        };
+      i[r].l = 1 * new Date();
+      a = s.createElement(o);
+      m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      a.charset = 'utf-8';
+      m.parentNode.insertBefore(a, m);
+    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/7655de37.js", 'daovoice');
+    daovoice('init', {
+      app_id: "7655de37",
+    });
+    daovoice('update');
+  </script>
+
+
+<head>
+     
+    <meta charset="UTF-8">
+	<meta name="baidu-site-verification" content="code-BAWKqOTd7U" />
+    <title>uni路由与页面跳转 - yiwan</title>
+    <link rel="shortcut icon" href="https://img1.baidu.com/it/u=613654980,3198890181&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+    <link rel="icon" href="/https://img1.baidu.com/it/u=613654980,3198890181&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+<link rel="stylesheet" href="/static/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="yiwan">
+    <meta property="og:title" content="uni路由与页面跳转"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://api.paugram.com/wallpaper?source=gh) }</style>
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>yiwan</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%8A%80%E6%9C%AF/">小小的技术</a>
+            </div>
+        </div>
+        
+            <a href="/about">关于我</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>uni路由与页面跳转</h2>
+            <div class="post-meta">
+                <time class="date">2022.07.28</time>
+            
+                <span class="category"><a class="category-link" href="/categories/%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%8A%80%E6%9C%AF/">小小的技术</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <p>uni路由与页面跳转 </p>
+<span id="more"></span>
+<h1 id="uni-navigateTo-OBJECT"><a href="#uni-navigateTo-OBJECT" class="headerlink" title="uni.navigateTo(OBJECT)"></a>uni.navigateTo(OBJECT)</h1><p>保留当前页面，跳转到应用内的某个页面，使用<code>uni.navigateBack</code>可以返回到原页面。</p>
+<p>#uni.redirectTo(OBJECT)<br>关闭当前页面，跳转到应用内的某个页面。</p>
+<p>#uni.reLaunch(OBJECT)<br>关闭所有页面，打开到应用内的某个页面。<br>注意： 如果调用了 uni.preloadPage(OBJECT) (opens new window)不会关闭，仅触发生命周期 onHide</p>
+<p>#uni.switchTab(OBJECT)<br>跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面。<br>注意： 如果调用了 uni.preloadPage(OBJECT) (opens new window)不会关闭，仅触发生命周期 onHide</p>
+<p>#uni.navigateBack(OBJECT)<br>关闭当前页面，返回上一页面或多级页面。可通过 getCurrentPages() 获取当前的页面栈，决定需要返回几层。</p>
+<p>详细代码:</p>
+<h1 id="yi-navigateTo"><a href="#yi-navigateTo" class="headerlink" title="yi.navigateTo"></a>yi.navigateTo</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">//在起始页面跳转到test.vue页面并传递参数</span><br><span class="line">uni.navigateTo(&#123;</span><br><span class="line">	url: &#x27;test?id=1&amp;name=uniapp&#x27;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 在test.vue页面接受参数</span><br><span class="line">export default &#123;</span><br><span class="line">	onLoad: function (option) &#123; //option为object类型，会序列化上个页面传递的参数</span><br><span class="line">		console.log(option.id); //打印出上个页面传递的参数。</span><br><span class="line">		console.log(option.name); //打印出上个页面传递的参数。</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 在起始页面跳转到test.vue页面，并监听test.vue发送过来的事件数据</span><br><span class="line">uni.navigateTo(&#123;</span><br><span class="line">  url: &#x27;pages/test?id=1&#x27;,</span><br><span class="line">  events: &#123;</span><br><span class="line">    // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据</span><br><span class="line">    acceptDataFromOpenedPage: function(data) &#123;</span><br><span class="line">      console.log(data)</span><br><span class="line">    &#125;,</span><br><span class="line">    someEvent: function(data) &#123;</span><br><span class="line">      console.log(data)</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line">  success: function(res) &#123;</span><br><span class="line">    // 通过eventChannel向被打开页面传送数据</span><br><span class="line">    res.eventChannel.emit(&#x27;acceptDataFromOpenerPage&#x27;, &#123; data: &#x27;data from starter page&#x27; &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 在test.vue页面，向起始页通过事件传递数据</span><br><span class="line">onLoad: function(option) &#123;</span><br><span class="line">  // #ifdef APP-NVUE</span><br><span class="line">  const eventChannel = this.$scope.eventChannel; // 兼容APP-NVUE</span><br><span class="line">  // #endif</span><br><span class="line">  // #ifndef APP-NVUE</span><br><span class="line">  const eventChannel = this.getOpenerEventChannel();</span><br><span class="line">  // #endif</span><br><span class="line">  eventChannel.emit(&#x27;acceptDataFromOpenedPage&#x27;, &#123;data: &#x27;data from test page&#x27;&#125;);</span><br><span class="line">  eventChannel.emit(&#x27;someEvent&#x27;, &#123;data: &#x27;data from test page for someEvent&#x27;&#125;);</span><br><span class="line">  // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据</span><br><span class="line">  eventChannel.on(&#x27;acceptDataFromOpenerPage&#x27;, function(data) &#123;</span><br><span class="line">    console.log(data)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>url有长度限制，太长的字符串会传递失败，可改用窗体通信 (opens new window)、全局变量 (opens new window)，另外参数中出现空格等特殊字符时需要对参数进行编码，如下为使用encodeURIComponent对参数进行编码的示例。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigator :url=&quot;&#x27;/pages/test/test?item=&#x27;+ encodeURIComponent(JSON.stringify(item))&quot;&gt;&lt;/navigator&gt;</span><br><span class="line"></span><br><span class="line">// 在test.vue页面接受参数</span><br><span class="line">onLoad: function (option) &#123;</span><br><span class="line">	const item = JSON.parse(decodeURIComponent(option.item));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：<br>页面跳转路径有层级限制，不能无限制跳转新页面<br>跳转到 tabBar 页面只能使用 switchTab 跳转<br>路由API的目标页面必须是在pages.json里注册的vue页面。如果想打开web url，在App平台可以使用 plus.runtime.openURL (opens new window)或web-view组件；H5平台使用 window.open；小程序平台使用web-view组件（url需在小程序的联网白名单中）。在hello uni-app中有个组件ulink.vue已对多端进行封装，可参考。<br>APP-NVUE平台暂不支持以this.getOpenerEventChannel()方式获取eventChannel，请换用this.$scope.eventChannel来获取，具体方式请参考上述示例。</p>
+<h1 id="er-redirectTo"><a href="#er-redirectTo" class="headerlink" title="er.redirectTo"></a>er.redirectTo</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uni.redirectTo(&#123;</span><br><span class="line">	url: &#x27;test?id=1&#x27;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>注意：<br>跳转到 tabBar 页面只能使用 switchTab 跳转</p>
+<h1 id="san-reLaunch"><a href="#san-reLaunch" class="headerlink" title="san.reLaunch"></a>san.reLaunch</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">uni.reLaunch(&#123;</span><br><span class="line">	url: &#x27;test?id=1&#x27;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">	onLoad: function (option) &#123;</span><br><span class="line">		console.log(option.id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：<br>H5端调用uni.reLaunch之后之前页面栈会销毁，但是无法清空浏览器之前的历史记录，此时navigateBack不能返回，如果存在历史记录的话点击浏览器的返回按钮或者调用history.back()仍然可以导航到浏览器的其他历史记录。</p>
+<h1 id="si-switchTab-OBJECT"><a href="#si-switchTab-OBJECT" class="headerlink" title="si.switchTab(OBJECT)"></a>si.switchTab(OBJECT)</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;tabBar&quot;: &#123;</span><br><span class="line">    &quot;list&quot;: [&#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/index/index&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;首页&quot;</span><br><span class="line">    &#125;,&#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/other/other&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;其他&quot;</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">other.vue</span><br><span class="line"></span><br><span class="line">uni.switchTab(&#123;</span><br><span class="line">	url: &#x27;/pages/index/index&#x27;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="wu-navigateBack"><a href="#wu-navigateBack" class="headerlink" title="wu.navigateBack"></a>wu.navigateBack</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 注意：调用 navigateTo 跳转时，调用该方法的页面会被加入堆栈，而 redirectTo 方法则不会。见下方示例代码</span><br><span class="line">// 此处是A页面</span><br><span class="line">uni.navigateTo(&#123;</span><br><span class="line">	url: &#x27;B?id=1&#x27;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 此处是B页面</span><br><span class="line">uni.navigateTo(&#123;</span><br><span class="line">	url: &#x27;C?id=1&#x27;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 在C页面内 navigateBack，将返回A页面</span><br><span class="line">uni.navigateBack(&#123;</span><br><span class="line">	delta: 2</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: 看完啦 (つд⊂)</li>
+                
+                
+                    <li>下一篇: <a href="/2022/07/20/uniapp%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/">uniapp表单验证</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/uni/" rel="tag">uni</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://img1.baidu.com/it/u=613654980,3198890181&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="yiwan" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>yiwan</h4>
+                <p>特立独行的一只前端小白菜狗.本站未注明转载的文章均为原创，并采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow">CC BY-NC-SA 4.0</a> 授权协议，转载请注明来源呢.有啥问题点右下角的灰色标标联系我哦!</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/07/28/uni%E8%B7%AF%E7%94%B1%E4%B8%8E%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC/">uni路由与页面跳转</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/20/uniapp%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/">uniapp表单验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/18/%E4%BD%BF%E7%94%A8uni%E5%BC%80%E5%8F%91%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%8E%88%E6%9D%83%E7%99%BB%E9%99%86/">使用uni开发字节跳动小程序的授权登陆</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/10/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%89%E6%8A%A5%E9%94%99%E4%BD%86%E4%B8%8D%E6%98%BE%E7%A4%BA/">chrome浏览器有报错但不显示</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/10/uni%E9%A1%B5%E9%9D%A2navigateTo%E8%B7%B3%E8%BD%AC%E7%9A%84%E4%BC%A0%E5%8F%82%E5%92%8C%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0/">uni页面navigateTo跳转的传参和接收参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/07/04/uni%E7%9C%81%E5%B8%82%E5%8C%BA%E9%80%89%E6%8B%A9%E5%99%A8/">uni省市区选择器</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">时光机：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签云：</h3>
+                    <a href="/tags/DaoVoice/" style="font-size: 10px;">DaoVoice</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/css/" style="font-size: 14px;">css</a> <a href="/tags/github/" style="font-size: 16px;">github</a> <a href="/tags/h5/" style="font-size: 10px;">h5</a> <a href="/tags/hexo/" style="font-size: 18px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/uni/" style="font-size: 20px;">uni</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E6%8A%A5%E9%94%99/" style="font-size: 12px;">报错</a>
+                </div> 
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2022 <a href="/">yiwan</a>. All Rights Reserved.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>var hingle = new Paul_Hingle({"copyright":true,"night":true});</script>
+
+
+  </body>
+</html>
